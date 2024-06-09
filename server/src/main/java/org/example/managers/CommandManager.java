@@ -34,7 +34,7 @@ public class CommandManager {
         addCommand(new RemoveHead(collectionManager, dbManager));
         addCommand(new Registration(console, dbManager));
         addCommand(new LogIN(console, dbManager));
-        addCommand(new RemoveByID(collectionManager));
+        addCommand(new RemoveByID(collectionManager, dbManager));
         addCommand(new RemoveElements(collectionManager));
         addCommand(new PrintPassportID(collectionManager));
         addCommand(new UpdateID(collectionManager, dbManager));

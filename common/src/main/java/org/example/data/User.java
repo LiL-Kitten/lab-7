@@ -3,6 +3,7 @@ package org.example.data;
 import java.io.Serializable;
 
 public class User implements Serializable {
+    private static final long serialVersionUID =-7491670296697608153L;
     private String login;
     private String password;
 

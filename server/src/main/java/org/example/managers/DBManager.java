@@ -74,7 +74,7 @@ public class DBManager {
                 return false;
             }
         } catch (SQLException e) {
-           console.printError("ошибка нахой");
+            console.printError("ошибка нахой");
             e.printStackTrace();
             return false;
         }
@@ -137,16 +137,17 @@ public class DBManager {
         ResultSet resultSet = statement.executeQuery("SELECT delete_first_person();");
     }
 
-    public void updateID(int oldID, int newID){
-        try{
+    public void updateID(int oldID, int newID) {
+        try {
             String query = "SELECT * FROM update_person_id(?, ?)";
-            try (PreparedStatement preparedStatement = connection.prepareStatement(query)){
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
                 preparedStatement.setInt(1, oldID);
                 preparedStatement.setInt(2, newID);
 
                 preparedStatement.executeQuery();
             }
-        }catch (SQLException e){}
+        } catch (SQLException e) {
+        }
     }
 
     public boolean createUser(String userName, String userPassword) {
@@ -154,32 +155,38 @@ public class DBManager {
         String sql = "{ ? = call add_user(?, ?) }";
 
         try (CallableStatement callableStatement = connection.prepareCall(sql)) {
-            // Регистрация типа возвращаемого значения (BOOLEAN)
             callableStatement.registerOutParameter(1, java.sql.Types.BOOLEAN);
-            // Установка параметров для userName и userPassword
             callableStatement.setString(2, userName);
             callableStatement.setString(3, userPassword);
-
-            // Вызов хранимой функции
             callableStatement.execute();
-
-            // Получаем результат вызова функции
             return callableStatement.getBoolean(1);
         } catch (SQLException e) {
             e.printStackTrace();
-            // Обработка ошибок базы данных
             return false;
         }
     }
-    public void removeByID(){
-        try {
-            statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("fasf");   //напиши запросик!!!
-        } catch (SQLException e){
-            //придумаешь
-        }
 
+    public void removeByID(String username, long id) {
+        String query = "SELECT delete_person_by_id(?, ?);";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setLong(1, id);
+            preparedStatement.setString(2, username);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                String result = resultSet.getString(1);
+                System.out.println(result);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
     }
+
 
     public Person pushInCollection() {
         try {
