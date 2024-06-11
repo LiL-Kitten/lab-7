@@ -4,9 +4,7 @@ import org.example.dth.Request;
 import org.example.dth.Response;
 import org.example.dth.ResponseStatus;
 import org.example.managers.DBManager;
-import org.example.util.ConsoleColor;
 import org.example.util.Printable;
-import org.postgresql.util.PSQLException;
 
 import java.sql.SQLException;
 

@@ -16,7 +16,7 @@ public class RuntimeManager {
     private Exit exit;
     private ExecuteScript executeScript;
     private Response response;
-    private User user;
+
 
     public RuntimeManager(Printable console, Client client, InputManager inputManager) {
         RuntimeManager.console = console;
@@ -34,9 +34,9 @@ public class RuntimeManager {
         while (true) {
             try {
                 // Отправка запроса на регистрацию и обработка ответа
-                this.user = inputManager.registration();
-
-                Response registrationResponse = client.sendAndAskResponse(new Request("registration", user));
+                inputManager.registration();
+                System.out.println(inputManager.getUser().getLogin() + inputManager.getUser().getPassword());
+                Response registrationResponse = client.sendAndAskResponse(new Request("registration", inputManager.getUser()));
                 if (processResponse(registrationResponse) == ResponseStatus.OK) {
                     break;
                 }
@@ -83,13 +83,13 @@ public class RuntimeManager {
                     // Ответ статус OK, значит регистрация или команда выполнена успешно
                     return ResponseStatus.OK;
                 case CHECK_REGISTRATION:
-                    user = inputManager.registration();
-                    newResponse = client.sendAndAskResponse(new Request("registration", user));
+                    inputManager.registration();
+                    newResponse = client.sendAndAskResponse(new Request("registration", inputManager.getUser()));
                     return processResponse(newResponse);
                 case WRONG_PASSWORD:
-                    user = inputManager.changePassword(user);
-                    System.out.println(user);
-                    newResponse = client.sendAndAskResponse(new Request("registration", user));
+                    inputManager.changePassword(inputManager.getUser());
+                    System.out.println(inputManager.getUser());
+                    newResponse = client.sendAndAskResponse(new Request("registration", inputManager.getUser()));
                     return processResponse(newResponse);
                 case REGISTRATION:
                     inputManager.registration();

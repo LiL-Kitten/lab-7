@@ -11,7 +11,11 @@ target/
 *.iws
 *.iml
 *.ipr
-
+lilStar22
+lilStar22.pub
+postgresql.jar
+pom.xml
+DBInfo.cfg
 ### Eclipse ###
 .apt_generated
 .classpath

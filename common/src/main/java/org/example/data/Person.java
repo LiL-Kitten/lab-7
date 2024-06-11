@@ -15,7 +15,7 @@ interface CoordinatesRange<T, S> {
 }
 
 public class Person implements Validator, Comparable<Person>, Serializable {
-
+    private static final long serialVersionUID = -8481171155047856535L;
     private long id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
 
     private String name; //Поле не может быть null, Строка не может быть пустой
@@ -52,6 +52,18 @@ public class Person implements Validator, Comparable<Person>, Serializable {
         this.nationality = nationality;
         this.location = location;
         this.creationDate = LocalDate.now();
+    }
+
+    public Person(long id ,String name, Coordinates coordinates, Float height, String passportID, Color hairColor, Country nationality, Location location, LocalDate creationDate) {
+        this.id = id;
+        this.name = name;
+        this.coordinates = coordinates;
+        this.height = height;
+        this.passportID = passportID;
+        this.hairColor = hairColor;
+        this.nationality = nationality;
+        this.location = location;
+        this.creationDate = creationDate;
     }
 
     public Person(Long id) {

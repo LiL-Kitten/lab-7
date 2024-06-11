@@ -31,7 +31,7 @@ public class InputManager {
         }
     }
 
-    public User registration() {
+    public void registration() {
         try {
             String[] userCommand = (scanner.nextLine().trim() + " ").split(" ", 2);
             String login = userCommand[0];
@@ -40,7 +40,7 @@ public class InputManager {
             // Кодирование пароля в MD5
             String md5Pass = encodeToMD5(pass);
 
-            return new User(login, md5Pass);
+           user = new User(login, md5Pass);
         } catch (NoSuchElementException e) {
             System.out.println(ConsoleColor.RED + "Пользовательский ввод не обнаружен!");
             System.exit(1);
@@ -48,8 +48,8 @@ public class InputManager {
             System.out.println(ConsoleColor.RED + "Ошибка алгоритма хеширования!");
             System.exit(1);
         }
-        return null;
     }
+
 
     public User changePassword(User user) {
         try {

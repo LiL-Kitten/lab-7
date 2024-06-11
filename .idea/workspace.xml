@@ -4,19 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="afa1dd76-1a81-4008-9db6-e29e49dae4df" name="Changes" comment="">
+    <list default="true" id="afa1dd76-1a81-4008-9db6-e29e49dae4df" name="Changes" comment="second commit">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/org/example/util/InputManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/example/util/InputManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/org/example/util/RuntimeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/org/example/util/RuntimeManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/org/example/data/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/org/example/data/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/example/commands/RemoveByID.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/example/commands/RemoveByID.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/example/managers/CommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/example/managers/CommandManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/org/example/data/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/org/example/data/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/example/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/example/commands/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/example/commands/Registration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/example/managers/CollectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/example/managers/CollectionManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/org/example/managers/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/example/managers/DBManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/example/util/RequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/example/util/RequestHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -33,17 +43,18 @@
   &quot;keyToString&quot;: {
     &quot;Application.client.executor&quot;: &quot;Run&quot;,
     &quot;Application.server.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.lab-7 [clean,package].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/rinat/Downloads/lab-7&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Applications/study/FIRST-COURSE/sem2/prog/lab-7&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
 }</component>
   <component name="RunManager" selected="Application.server">
-    <configuration name="client" type="Application" factoryName="Application">
+    <configuration name="client" type="Application" factoryName="Application" activateToolWindowBeforeRun="false">
       <option name="MAIN_CLASS_NAME" value="org.example.App" />
       <module name="client" />
       <method v="2">
@@ -57,9 +68,41 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="lab-7 [clean,package]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="package" />
+              </list>
+            </option>
+            <option name="multimoduleDir" />
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.client" />
       <item itemvalue="Application.server" />
+      <item itemvalue="Maven.lab-7 [clean,package]" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -71,6 +114,19 @@
       <option name="presentableId" value="Default" />
       <updated>1717879073219</updated>
     </task>
+    <task id="LOCAL-00001" summary="second commit">
+      <option name="closed" value="true" />
+      <created>1717925783947</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1717925783947</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="second commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="second commit" />
   </component>
 </project>

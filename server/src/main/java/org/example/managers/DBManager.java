@@ -2,10 +2,12 @@ package org.example.managers;
 
 import org.example.data.*;
 import org.example.util.Printable;
+import org.postgresql.util.PSQLException;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.Properties;
 
 public class DBManager {
@@ -167,23 +169,28 @@ public class DBManager {
     }
 
     public void removeByID(String username, long id) {
-        String query = "SELECT delete_person_by_id(?, ?);";
-
+        String query = "SELECT delete_person_by_id(?::INTEGER, ?::TEXT);";
+        System.out.println(username + "  " + id);
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
             preparedStatement.setLong(1, id);
-            preparedStatement.setString(2, username);
+            preparedStatement.setString(2, username.trim());
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
                 String result = resultSet.getString(1);
-                System.out.println(result);
+                console.println(result);
             }
 
-        } catch (SQLException e) {
+        } catch (PSQLException e) {
+            // Логируем подробности ошибки, включая сообщение и стектрейс
+            console.printError("PSQLException: " + e.getMessage());
             e.printStackTrace();
-
+        } catch (SQLException e) {
+            // Логируем подробности ошибки, включая сообщение и стектрейс
+            console.printError("SQLException: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -197,6 +204,7 @@ public class DBManager {
                 String name = result.getString("person_name"); //        person_name TEXT,
                 int coordinatesX = result.getInt("coordinate_x");//        coordinate_x INTEGER,
                 float coordinatesY = result.getFloat("coordinate_y");//        coordinate_y FLOAT,
+
                 float height = result.getFloat("person_height");//        person_height FLOAT,
                 String passportID = result.getString("person_passport_id");//        person_passport_id TEXT,
                 Color hair = Color.valueOf(result.getString("person_hair"));//        person_hair hair_colour,
@@ -204,13 +212,15 @@ public class DBManager {
                 Float locationX = result.getFloat("location_x");//        location_x FLOAT,
                 long locationY = result.getLong("location_y");//        location_y BIGINT,
                 String locationName = result.getString("location_name");//        location_name TEXT,
+                LocalDate date = result.getDate("creation_date").toLocalDate();
 //                console.println(id + " " + name + " " + coordinatesX + " " + coordinatesY + " " + height
 //                        + " " + passportID + " " + hair + " " + nationality + " " + locationX + " " + locationY
 //                        + " " + locationName);
-                Person person = new Person(id, name, new Coordinates(coordinatesX, coordinatesY), height, passportID, hair, nationality, new Location(locationX, locationY, locationName));
+                Person person = new Person(id, name, new Coordinates(coordinatesX, coordinatesY), height, passportID, hair, nationality, new Location(locationX, locationY, locationName), date);
                 collectionManager.setIdCounter(person.getID());
-                collectionManager.addElement(person);
+                collectionManager.initializeDB(person);
             }
+            System.out.println(collectionManager.getTotalID());
         } catch (SQLException e) {
             console.printError("не предвиденная ошибка с БД");
             throw new RuntimeException(e);
